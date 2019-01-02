@@ -27,3 +27,9 @@ body {
   background-color: #fff;
   font-weight: bold;
 }
+
+@media (max-width: 740px) {
+  .back-one-row {
+    max-width: 100%;
+  }
+}

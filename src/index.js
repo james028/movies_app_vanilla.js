@@ -9,20 +9,23 @@ document.getElementById("form").addEventListener("submit", function(e) {
   document.getElementById("input").value = "";
 });
 
-function fetchJSON(e, a) {
+function fetchJSON(e) {
   fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&s=${e}`)
     .then(response => response.json())
     .then(data => {
       console.log(data);
       let output = "";
       data.Search.forEach(function(item) {
-        output += `<div class="well">
-                      <div class="col-md-4"><img src="${
-                        item.Poster
-                      }" alt="" /></div>
-                      <div class="col-md-8">
-                        <div>${item.Title}</div>
-                        <div>${item.Year}</div>
+        output += `<div class="col-sm-4 back-one-row">
+                      <div class="row">
+                        <div class="col-7"><img  class="img" src="${
+                          item.Poster
+                        }" alt="" /></div>
+                        <div class="col-5">
+                          <div>Title: <br /><strong>${item.Title}</strong></div>
+                          <div>Year: <br /><strong>${item.Year}</strong></div>
+                          <button class="btn">More details</button>
+                        </div>
                       </div>
                     </div>`;
       });
